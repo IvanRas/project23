@@ -19,6 +19,8 @@ class Command(BaseCommand):
         for prod in products:
             product, created = Product.objects.get_or_create(**prod)
             if created:
-                self.stdout.write(self.style.SUCCESS(f'Successfully added student: {product.name} {product.description}'))
+                self.stdout.write(self.style.SUCCESS(f'Successfully added student: '
+                                                     f'{product.name} {product.description}'))
             else:
-                self.stdout.write(self.style.WARNING(f'Student already exists: {product.name} {product.description}'))
+                self.stdout.write(self.style.WARNING(f'Student already exists: '
+                                                     f'{product.name} {product.description}'))
