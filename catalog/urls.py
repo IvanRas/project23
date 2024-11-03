@@ -22,5 +22,6 @@ from catalog import views
 urlpatterns = [
     path("", views.index, name="index"),
     path("contacts/", views.contacts, name="contacts"),
-    path("catalog/", include('catalog.urls', namespace="catalog"))
+    path("catalog/", include('catalog.urls', namespace="catalog")),
+    path("", include('media.urls', namespace="media"))
 ]
