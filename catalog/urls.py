@@ -18,12 +18,15 @@ from django.urls import path, include
 
 from catalog import views
 from catalog.apps import CatalogConfig
+from catalog.views import contacts, product_detail
+
 
 app_name = CatalogConfig.name
 
+
 urlpatterns = [
-    path("", views.index, name="index"),
-    path("contacts/", views.contacts, name="contacts"),
-    path("catalog/", include('catalog.urls', namespace="catalog")),
-    path("", include('media.urls', namespace="media"))
+    path("home/", views.home, name="home"),
+    path('contacts/', contacts, name='contacts'),
+    path('product_detail/<int:product_id>/', product_detail, name='product_detail')
+
 ]
