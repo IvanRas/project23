@@ -18,7 +18,7 @@ def catalog(request):
 
 
 def product_detail(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
+    product = Product.objects.get(id=product_id)
     context = {
         'product': product,
     }
