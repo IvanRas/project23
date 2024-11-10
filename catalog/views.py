@@ -30,8 +30,8 @@ def product_list(request, pk):
 
 
 def product_detail(request, pk):
-    product = get_object_or_404(id=pk)
+    product = get_object_or_404(Product, id=pk)
     context = {'product': product}
-    return render(request, 'product/product_detail.html', context=context)
+    return render(request, 'product_detail.html', context=context)
 
 

@@ -9,12 +9,12 @@
           <div class="card shadow-sm">
             <img src="{{ product.image| media_filter }}" class="card-img-top" alt="{{ product.name }}">
             <div class="card-body">
-              <p class="card-text">{{% prod.name %}: {% prod.price %}}</p>
-              <p class="card-text">{{% prod.category %}}</p>
-              <p class="card-text">{{% prod.description| truncatechars:100 %}}</p>
+              <p class="card-text"> {{ product.name }}: {{ product.price }}</p>
+              <p class="card-text">{{ product.category }}</p>
+              <p class="card-text">{{ product.description| truncatechars:100 }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a class="btn btn-primary" href="{% url 'product:base' %}">Назад</a>
+                  <a class="btn btn-primary" href="{% url 'catalog:home' %}">Назад</a>
                 </div>
                 <small class="text-body-secondary">9 mins</small>
               </div>
