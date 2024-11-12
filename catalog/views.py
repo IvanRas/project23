@@ -2,7 +2,6 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 from catalog.models import Product
@@ -57,5 +56,4 @@ class ProductDetailView(DetailView):
 #     product = get_object_or_404(Product, id=pk)
 #     context = {'product': product}
 #     return render(request, 'product_detail.html', context=context)
-
 
