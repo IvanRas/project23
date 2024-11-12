@@ -6,6 +6,8 @@ from catalog.models import Product
 # Create your views here.
 
 
+# class
+
 def home(request):
     products = Product.objects.all()
     context = {'products': products}
@@ -23,10 +25,7 @@ def contacts(request):
     return render(request, 'contacts.html')
 
 
-def product_list(request, pk):
-    products = Product.objects.all()
-    context = {'products': products}
-    return render(request, 'product/product_list.html', context=context)
+
 
 
 def product_detail(request, pk):
