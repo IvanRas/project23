@@ -4,7 +4,7 @@
 ## Установка:
 1. Клонируйте репозиторий:
 ```
-(https://github.com/IvanRas/project23)
+[https://github.com/IvanRas/project23]
 ```
 2. Установите зависимости:
 ```
