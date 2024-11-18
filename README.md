@@ -4,7 +4,7 @@
 ## Установка:
 1. Клонируйте репозиторий:
 ```
-[https://github.com/Dimon4ik812/django_homework/tree/feature/homework_22](https://github.com/IvanRas/project23)
+(https://github.com/IvanRas/project23)
 ```
 2. Установите зависимости:
 ```
