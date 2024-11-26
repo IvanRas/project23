@@ -26,6 +26,13 @@ class ProductForm(forms.Form):
             raise forms.ValidationError("Название не должно содержать запрещенные слова.")
         return description
 
+    def clean_price(self):
+        cleaned_data = super().clean()
+        price = cleaned_data.get('price')
+        if price < 0:
+            raise forms.ValidationError("Неверная цена")
+        return price
+
 
 class CategorytForm(forms.Form):
     class Meta:
