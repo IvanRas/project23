@@ -1,21 +1,20 @@
 from django import forms
 from .models import Product, Category
+from django.core.exceptions import ValidationError
 
 forbidden = ['казино', 'криптовалюта', 'крипта', 'биржа',
              'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
 
 
-class ProductForm(forms.Form):
+class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'image', 'category', 'price']
+        fields = ['name', 'description', 'image', 'category', 'price', 'created_at']
 
     def clean_name(self):
-        cleaned_data = super().clean()
-        name = cleaned_data.get('name')
-
+        name = self.cleaned_data.get('name')
         if any(word in name.lower() for word in forbidden):
-            raise forms.ValidationError("Название не должно содержать запрещенные слова.")
+            raise ValidationError("Название не должно содержать запрещенные слова.")
         return name
 
     def clean_description(self):
@@ -23,18 +22,17 @@ class ProductForm(forms.Form):
         description = cleaned_data.get('description')
 
         if any(word in description.lower() for word in forbidden):
-            raise forms.ValidationError("Название не должно содержать запрещенные слова.")
+            raise ValidationError("Название не должно содержать запрещенные слова.")
         return description
 
     def clean_price(self):
-        cleaned_data = super().clean()
-        price = cleaned_data.get('price')
+        price = self.cleaned_data.get('price')
         if price < 0:
-            raise forms.ValidationError("Неверная цена")
+            raise ValidationError("Неверная цена")
         return price
 
 
-class CategorytForm(forms.Form):
+class CategorytForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = ['name', 'description']
