@@ -47,12 +47,6 @@ class CatalogContactsView(View):
         return HttpResponse(f"Спасибо, {name}! Ваше сообщение получено.")
 
 
-class ProductDetailView(DetailView):
-    model = Product
-    template_name = 'catalog/product_detail.html'
-    context_object_name = 'product'
-
-
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
@@ -60,9 +54,16 @@ class ProductCreateView(CreateView):
     success_url = reverse_lazy('catalog: home')
 
 
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'catalog/product_detail.html'
+    context_object_name = 'product'
+
+
+
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'catalog/product_delite.html'
+    template_name = 'catalog/product_delete.html'
     success_url = reverse_lazy('catalog: home')
 
 
