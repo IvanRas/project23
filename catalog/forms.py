@@ -41,6 +41,15 @@ class ProductForm(forms.ModelForm):
             raise ValidationError("Неверная цена")
         return price
 
+    def clean_image(self):
+        image = self.cleaned_data.get('image')
+        if image:
+            if image.size > 5 * 1024 * 1025:
+                raise ValidationError("Файл больше 5МБ")
+            if not (image.name.endswith('.jpg') or image.name.endswith('.jpeg') or image.name.endswith('.png')):
+                raise ValidationError("Файл не допустимого формата")
+        return image
+
 
 class CategoryForm(forms.ModelForm):
     class Meta:
