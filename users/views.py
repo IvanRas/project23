@@ -5,7 +5,7 @@ from .forms import CustomUserCreationForm
 
 
 class CustomLoginView(LoginView):
-    template_name = 'registration/login.html'  # Шаблон для отображения формы входа
+    template_name = 'users/login.html'  # Шаблон для отображения формы входа
     success_url = reverse_lazy('home')  # URL для перенаправления после успешного входа
 
 

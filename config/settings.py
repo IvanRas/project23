@@ -115,10 +115,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Параметры LOGIN_REDIRECT_URL и LOGOUT_REDIRECT_URL
 # URL для перенаправления после успешного входа
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
 
 # URL для перенаправления после выхода из системы
-LOGOUT_REDIRECT_URL = 'goodbye'
+LOGOUT_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -146,3 +146,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.CustomUserCreationForm'
