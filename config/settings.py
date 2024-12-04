@@ -112,6 +112,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Параметры LOGIN_REDIRECT_URL и LOGOUT_REDIRECT_URL
+# URL для перенаправления после успешного входа
+LOGIN_REDIRECT_URL = 'home'
+
+# URL для перенаправления после выхода из системы
+LOGOUT_REDIRECT_URL = 'goodbye'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
