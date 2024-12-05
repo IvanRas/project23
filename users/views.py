@@ -1,19 +1,26 @@
-from django.contrib.auth.views import LoginView, LogoutView
-from django.views.generic.edit import CreateView
+from django.core.mail import send_mail
+from django.views.generic import CreateView
 from django.urls import reverse_lazy
-from .forms import CustomUserCreationForm
+
+from users.forms import UserRegistrationForm
+from users.models import User
+from django.conf import settings
 
 
-class CustomLoginView(LoginView):
-    template_name = 'users/login.html'  # Шаблон для отображения формы входа
-    success_url = reverse_lazy('home')  # URL для перенаправления после успешного входа
+class UserCreateView(CreateView):
+    model = User
+    form_class = UserRegistrationForm
+    success_url = reverse_lazy('users:login')
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
 
-class CustomLogoutView(LogoutView):
-    next_page = reverse_lazy('goodbye')  # URL для перенаправления после выхода из системы
+        send_mail(
+            subject='Добро пожаловать!',
+            message='Спасибо за регистрацию на нашем сайте "SkyStore"',
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[form.cleaned_data.get('email')],
+            fail_silently=False,
+        )
 
-
-class RegisterView(CreateView):
-    template_name = 'register.html'
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy('home')
+        return response
