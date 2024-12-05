@@ -1,14 +1,16 @@
 from django.core.mail import send_mail
-from django.views.generic import CreateView
 from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+
 
 from users.forms import UserRegistrationForm
 from users.models import User
 from django.conf import settings
 
 
-class UserCreateView(CreateView):
+class RegisterView(CreateView):
     model = User
+    template_name = 'register.html'
     form_class = UserRegistrationForm
     success_url = reverse_lazy('users:login')
 
@@ -24,3 +26,4 @@ class UserCreateView(CreateView):
         )
 
         return response
+
