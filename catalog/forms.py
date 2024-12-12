@@ -9,7 +9,7 @@ forbidden = ['казино', 'криптовалюта', 'крипта', 'бир
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name', 'description', 'image', 'category', 'price', 'created_at', 'is_available']
+        fields = ['name', 'description', 'image', 'category', 'price', 'created_at']
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
